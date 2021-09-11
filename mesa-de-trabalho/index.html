@@ -76,6 +76,164 @@
         ];
 
         /*
+            Atividade I: Liste todos os valores
+            Listar todos os valores da array.
+        */
+
+        //var imprimirTodosOsAlunos = listaDeAlunos.map(listarTodosOsAlunos);
+
+        function listarTodosOsAlunos(aluno) {
+            // 1. Imprimir no console o nome do aluno.
+            console.log(`Nome: ${aluno.nome}`);
+            // 2. Ler todos os os itens da array nota.
+            aluno.notas.map(listarNotasDoAluno);
+            console.log('-----------');
+        }
+
+        // 2. Ler todos os os itens da array nota.
+        function listarNotasDoAluno(nota, indice) {
+            // Extra imprimir os bimestres utilizando o indice.
+            console.log(`${indice+=1} bimestre: ${nota}`);
+        } 
+
+        /*
+            (OK) 1.   Ler todos os alunos da lista;
+            (OK) 2.   Imprimir no console o nome do aluno;
+            (OK) 3.   Imprimir no console as notas do aluno; 
+            (OK) 3.1. Ler todos os os itens da array nota;
+            (OK) 3.2. Imprimir no console cada nota. 
+        */
+
+        /*
+            Atividade II: Calcule a média de todos os valores
+            Calcule a média de todos as notas da lista.
+        */
+
+        //var imprimirTodasAsNotas = listaDeAlunos.map(listarNotasDoAluno);
+
+        function somarTodasAsNotasDoAluno(valorTotal, nota) {
+            return valorTotal + nota;
+        }
+
+        function calcularMediaDasNotas(notasSomadas) {
+            return notasSomadas / 4;
+        }
+
+        function listarNotasDoAluno(aluno) {
+            var resultadoDaSomaDeTodasAsNotas = aluno.notas.reduce(somarTodasAsNotasDoAluno);
+            
+            console.log('Aluno:', aluno.nome);
+            console.log('Média:', calcularMediaDasNotas(resultadoDaSomaDeTodasAsNotas));
+            console.log('-----------');
+        }
+
+        /*
+            (OK) 1.   Ler todos os alunos;
+            (OK) 2.   Ler todas as notas;
+            (OK) 2.1  Somar todas as notas;
+            (OK) 2.2  Dividir a soma pela quantidade de notas;
+            (OK) 3.   Imprimir o nome do aluno e a média das notas.   
+        */
+
+        /*
+            Atividade III: Filtre e liste valores
+            Filtre e liste todos os alunos que zeraram em uma ou mais provas.
+        */
+
+        //var imprimirTodosOsAlunosQueZeraramUmaOuMaisNotas = listaDeAlunos.map(listarNotasDoAluno)
+
+        function listarNotasDoAluno(aluno) {
+            var temNotaZerada = aluno.notas.some(buscarUmaOuMaisNotasZeradas);
+
+            if(temNotaZerada) {
+                console.log('Alunos com notas zeradas')
+                console.log('Nome:', aluno.nome);
+                console.log('-----------');
+            }
+        }
+
+        function buscarUmaOuMaisNotasZeradas(nota) {
+           return nota == 0;
+        }
+
+        /*
+            (OK) 1.   Ler as notas; map()
+            (OK) 2.   Buscar notas igual a 0; some()
+            (OK) 3.   Imprimir o nome do aluno.
+        */
+
+        /*
+            Atividade IV: Busque e liste valores
+            Filtre todos os alunos, cuja a média foi inferior a 6.
+        */
+        
+        // 1.   Ler todos os alunos;
+        // 2.   Ler todas as notas;
+        function listarNotasDoAluno(aluno) {
+            var resultadoDaSomaDeTodasAsNotas = aluno.notas.reduce(somarTodasAsNotasDoAluno);
+            var resultadoDaMediaDeTodasAsNotas = calcularMediaDasNotas(resultadoDaSomaDeTodasAsNotas);
+
+            buscarTodosOsAlunosComMediaInferiorASeis(resultadoDaMediaDeTodasAsNotas, aluno.nome);
+        }
+        
+        // 2.1  Somar todas as notas;
+        function somarTodasAsNotasDoAluno(valorTotal, nota) {
+            return valorTotal + nota;
+        }
+        
+        // 2.2  Dividir a soma pela quantidade de notas;
+        function calcularMediaDasNotas(notasSomadas) {
+            return notasSomadas / 4;
+        }
+
+        // Busca os aluno com média inferior a 6;
+        function buscarTodosOsAlunosComMediaInferiorASeis(mediaDeTodasAsNotas, nomeDoAluno) {
+            if(mediaDeTodasAsNotas < 6) {
+                console.log('Nome: ', nomeDoAluno);
+                console.log('Média:', mediaDeTodasAsNotas);
+                console.log('-----------');
+            }
+        }
+
+        // 4.   Imprime os alunos com média inferior a 6. 
+        // var imprimirTodosOsAlunosComMediaInferiorASeis = listaDeAlunos.map(listarNotasDoAluno);
+
+        /*
+            (OK) 1.   Ler todos os alunos;
+            (OK) 2.   Ler todas as notas;
+            (OK) 2.1  Somar todas as notas;
+            (OK) 2.2  Dividir a soma pela quantidade de notas;
+            (OK) 3.   Busca os aluno com média inferior a 6;
+            (OK) 4.   Imprime os alunos com média inferior a 6.   
+        */
+
+        /*
+            Atividade V: Busque por caracteres
+            Busque e liste todos os alunos que possuam caracteres 'io'.
+        */
+
+        // 1.   Buscar todos os alunos; filter();
+        var resultadoTodosOsAlunosComCaracteresIO = listaDeAlunos
+            .filter(buscarEListarTodosOsAlunosComCaracteresIO)
+            .map(listarAlunosComCaracteresIO);
+
+        // 2.   Busca os caracteres; includes();
+        function buscarEListarTodosOsAlunosComCaracteresIO(aluno) {
+            return aluno.nome.includes('io');
+        }
+
+        // 3.   Imprimir a lista de alunos;
+        function listarAlunosComCaracteresIO(aluno) {
+            console.log('Nome:', aluno.nome);
+        }
+
+        /*
+            (OK) 1.   Ler todos os alunos; filter();
+            (OK) 2.   Busca os caracteres; includes();
+            (OK) 3.   Imprimir a lista de alunos; map();
+        */
+
+        /*
             Documentação dos recursos abordado em aula:
             * map() https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map 
             * filter() https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
